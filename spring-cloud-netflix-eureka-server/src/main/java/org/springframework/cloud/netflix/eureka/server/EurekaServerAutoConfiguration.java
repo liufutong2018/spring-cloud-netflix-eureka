@@ -109,10 +109,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration(proxyBeanMethods = false)
 @Import(EurekaServerInitializerConfiguration.class)
-@ConditionalOnBean(EurekaServerMarkerConfiguration.Marker.class)
+@ConditionalOnBean(EurekaServerMarkerConfiguration.Marker.class) //添加了@EnableEurekaServer注解就会注入这个类
 @EnableConfigurationProperties({ EurekaDashboardProperties.class, InstanceRegistryProperties.class,
-		EurekaProperties.class })
-@PropertySource("classpath:/eureka/server.properties")
+		EurekaProperties.class }) //配置的属性包装类
+@PropertySource("classpath:/eureka/server.properties") //配置文件地址
 public class EurekaServerAutoConfiguration implements WebMvcConfigurer {
 
 	private static final Log log = LogFactory.getLog(EurekaServerAutoConfiguration.class);
@@ -196,7 +196,7 @@ public class EurekaServerAutoConfiguration implements WebMvcConfigurer {
 		return new Jersey3EurekaServerHttpClientFactory();
 	}
 
-	@Bean
+	@Bean //注入 InstanceRegistry 对象
 	public PeerAwareInstanceRegistry peerAwareInstanceRegistry(ServerCodecs serverCodecs,
 			EurekaServerHttpClientFactory eurekaServerHttpClientFactory) {
 		this.eurekaClient.getApplications(); // force initialization
@@ -206,7 +206,7 @@ public class EurekaServerAutoConfiguration implements WebMvcConfigurer {
 				this.instanceRegistryProperties.getDefaultOpenForTrafficCount());
 	}
 
-	@Bean
+	@Bean //获取到所有EurekaServer的节点
 	@ConditionalOnMissingBean
 	public PeerEurekaNodes peerEurekaNodes(PeerAwareInstanceRegistry registry, ServerCodecs serverCodecs,
 			ReplicationClientAdditionalFilters replicationClientAdditionalFilters) {

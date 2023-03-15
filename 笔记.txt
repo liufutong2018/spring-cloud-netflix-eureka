@@ -1,5 +1,4 @@
 阅读eureka源码
-客户端
   1.1 EurekaClientAutoConfiguration.java Eureka客户端的自动配置
     1.1.1 封装配置文件中属性的两个类：EurekaClientConfigBean、EurekaInstanceConfigBean
     1.1.2 创建EurekaClient 两个地方？ 详细分析注解
@@ -16,10 +15,11 @@
             getEurekaHttpClient().deleteStatusOverride(info.getAppName(), info.getId(), info);
             跳转到：/eureka-client/src/main/java/com/netflix/discovery/shared/transport/jersey/AbstractJerseyEurekaHttpClient.java
 
-
-
+客户端
+============================================================================================================================
 服务端
-
-
+1.1 EurekaServerAutoConfiguration.java Eureka服务端的自动配置
+    1.1.1 InstanceRegistry、PeerAwareInstanceRegistry、PeerEurekaNodes
+1.2 
 
 
