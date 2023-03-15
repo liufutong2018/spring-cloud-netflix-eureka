@@ -1,4 +1,5 @@
-1. 阅读eureka源码
+阅读eureka源码
+客户端
   1.1 EurekaClientAutoConfiguration.java Eureka客户端的自动配置
     1.1.1 封装配置文件中属性的两个类：EurekaClientConfigBean、EurekaInstanceConfigBean
     1.1.2 创建EurekaClient 两个地方？ 详细分析注解
@@ -6,12 +7,18 @@
   1.2 CloudEurekaClient().java Eureka客户端构造器
     1.2.1 super()
     1.2.2 进入 /eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java
-    
-    1.2.3 
+  1.3 EurekaClientAutoConfiguration.java @Bean(destroyMethod = "shutdown") //shutdown：服务下架
+    1.3.1 进入eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java
+  1.4 EurekaClient 服务下线
+    1.4.1 EurekaServiceRegistry.java setStatus() 设置状态
+            registration.getEurekaClient().cancelOverrideStatus(info);
+          CloudEurekaClient.java cancelOverrideStatus()
+            getEurekaHttpClient().deleteStatusOverride(info.getAppName(), info.getId(), info);
+            跳转到：/eureka-client/src/main/java/com/netflix/discovery/shared/transport/jersey/AbstractJerseyEurekaHttpClient.java
 
 
 
-
+服务端
 
 
 

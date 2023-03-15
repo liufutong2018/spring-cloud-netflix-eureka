@@ -75,13 +75,13 @@ public class EurekaServiceRegistry implements ServiceRegistry<EurekaRegistration
 	public void setStatus(EurekaRegistration registration, String status) {
 		InstanceInfo info = registration.getApplicationInfoManager().getInfo();
 
-		// TODO: howto deal with delete properly?
+		// TODO: 如何正确处理删除? howto deal with delete properly?
 		if ("CANCEL_OVERRIDE".equalsIgnoreCase(status)) {
 			registration.getEurekaClient().cancelOverrideStatus(info);
 			return;
 		}
 
-		// TODO: howto deal with status types across discovery systems?
+		// TODO: 如何在发现系统中处理状态类型? howto deal with status types across discovery systems?
 		InstanceInfo.InstanceStatus newStatus = InstanceInfo.InstanceStatus.toEnum(status);
 		registration.getEurekaClient().setStatus(newStatus, info);
 	}

@@ -298,7 +298,7 @@ public class EurekaClientAutoConfiguration {
 		@Autowired
 		private AbstractDiscoveryClientOptionalArgs<?> optionalArgs;
 
-		@Bean(destroyMethod = "shutdown")
+		@Bean(destroyMethod = "shutdown") //shutdown：下架
 		//没有EurekaClient这个bean，只查找当前容器；单例的
 		@ConditionalOnMissingBean(value = EurekaClient.class, search = SearchStrategy.CURRENT) 
 		//运行时刷新 
