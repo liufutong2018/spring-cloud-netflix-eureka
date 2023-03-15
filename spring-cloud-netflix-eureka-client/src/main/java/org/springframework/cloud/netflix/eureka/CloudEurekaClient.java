@@ -61,10 +61,11 @@ public class CloudEurekaClient extends DiscoveryClient {
 			TransportClientFactories transportClientFactories, ApplicationEventPublisher publisher) {
 		this(applicationInfoManager, config, transportClientFactories, null, publisher);
 	}
-
+	// 参数初始化
 	public CloudEurekaClient(ApplicationInfoManager applicationInfoManager, EurekaClientConfig config,
 			TransportClientFactories transportClientFactories, AbstractDiscoveryClientOptionalArgs<?> args,
 			ApplicationEventPublisher publisher) {
+		// super() 进入 /eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java
 		super(applicationInfoManager, config, transportClientFactories, args);
 		this.applicationInfoManager = applicationInfoManager;
 		this.publisher = publisher;
