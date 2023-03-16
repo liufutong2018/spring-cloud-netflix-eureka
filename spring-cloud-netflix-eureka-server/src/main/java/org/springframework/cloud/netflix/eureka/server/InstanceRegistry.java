@@ -101,10 +101,10 @@ public class InstanceRegistry extends PeerAwareInstanceRegistryImpl implements A
 		if (application != null) {
 			InstanceInfo instanceInfo = application.getByInstanceId(serverId);
 			if (instanceInfo != null) {
-				publishEvent(new EurekaInstanceRenewedEvent(this, appName, serverId, instanceInfo, isReplication));
+				publishEvent(new EurekaInstanceRenewedEvent(this, appName, serverId, instanceInfo, isReplication)); //发布事件
 			}
 		}
-		return super.renew(appName, serverId, isReplication);
+		return super.renew(appName, serverId, isReplication);//续约
 	}
 
 	@Override
