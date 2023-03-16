@@ -63,7 +63,7 @@ public class EurekaServerInitializerConfiguration implements ServletContextAware
 	public void start() {
 		new Thread(() -> {
 			try {
-				// TODO: is this class even needed now?
+				// TODO: is this class even needed now? contextInitialized()上下文初始化
 				eurekaServerBootstrap.contextInitialized(EurekaServerInitializerConfiguration.this.servletContext);
 				log.info("Started Eureka Server");
 

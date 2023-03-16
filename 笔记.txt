@@ -20,6 +20,29 @@
 服务端
 1.1 EurekaServerAutoConfiguration.java Eureka服务端的自动配置
     1.1.1 InstanceRegistry、PeerAwareInstanceRegistry、PeerEurekaNodes
-1.2 
+
+1.2 定时清除过期Client；EurekaServerAutoConfiguration.java Eureka服务端的自动配置
+    @Import(EurekaServerInitializerConfiguration.class) //EurekaServer初始化配置
+        eurekaServerBootstrap.contextInitialized(EurekaServerInitializerConfiguration.this.servletContext); contextInitialized()上下文初始化
+          EurekaServerBootstrap.initEurekaServerContext(); //初始化EurekaServer上下文
+            this.registry.openForTraffic(this.applicationInfoManager, registryCount); //开启流量
+              InstanceRegistry.openForTraffic()；跳转至/eureka/eureka-core/。。/PeerAwareInstanceRegistryImpl.java openForTraffic()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

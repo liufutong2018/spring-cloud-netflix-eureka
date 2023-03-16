@@ -108,7 +108,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author Weix Sun
  */
 @Configuration(proxyBeanMethods = false)
-@Import(EurekaServerInitializerConfiguration.class)
+@Import(EurekaServerInitializerConfiguration.class) //EurekaServer初始化配置
 @ConditionalOnBean(EurekaServerMarkerConfiguration.Marker.class) //添加了@EnableEurekaServer注解就会注入这个类
 @EnableConfigurationProperties({ EurekaDashboardProperties.class, InstanceRegistryProperties.class,
 		EurekaProperties.class }) //配置的属性包装类

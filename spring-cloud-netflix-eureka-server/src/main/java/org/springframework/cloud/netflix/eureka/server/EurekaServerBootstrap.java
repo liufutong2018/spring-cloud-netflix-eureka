@@ -67,7 +67,7 @@ public class EurekaServerBootstrap {
 
 	public void contextInitialized(ServletContext context) {
 		try {
-			initEurekaServerContext();
+			initEurekaServerContext(); //初始化EurekaServer上下文
 
 			context.setAttribute(EurekaServerContext.class.getName(), this.serverContext);
 		}
@@ -109,7 +109,7 @@ public class EurekaServerBootstrap {
 
 		// Copy registry from neighboring eureka node
 		int registryCount = this.registry.syncUp();
-		this.registry.openForTraffic(this.applicationInfoManager, registryCount);
+		this.registry.openForTraffic(this.applicationInfoManager, registryCount); //开启流量
 
 		// Register all monitoring statistics.
 		EurekaMonitors.registerAllStats();
